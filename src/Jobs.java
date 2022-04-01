@@ -8,5 +8,6 @@ public class Jobs {
     String name;
     SortedPriorityQueue processQ = new SortedPriorityQueue<>();
 
+    
 
 }
