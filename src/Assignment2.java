@@ -1,5 +1,5 @@
 public class Assignment2 {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Scheduler.readInJobs("C:\\Users\\xdrag\\Desktop\\Assignment 2\\src\\jobs.txt");
     }
 }
