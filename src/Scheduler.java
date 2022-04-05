@@ -39,12 +39,14 @@ public class Scheduler {
             int p = processQ.min().getValue().priority;
             int l = processQ.min().getValue().length - 1;
             processQ.removeMin();
-            processQ.min().getValue().timeWaiting++;
 
-            if (processQ.min().getValue().timeWaiting > maxWaitingTime) {
-                processQ = increasePriorities(processQ);
+            if (!processQ.isEmpty()) {
+                processQ.min().getValue().timeWaiting++;
+                if (processQ.min().getValue().timeWaiting == maxWaitingTime) {
+                    processQ = increasePriorities(processQ);
+                }
             }
-            System.out.printf("%s (priority: %d, time remaining: %d\n", n, p, l);
+            System.out.printf("%s (priority: %d, time remaining: %d)\n", n, p, l);
             if (l > 0) {
                 Job updatedJob = new Job(n, p, l);
                 processQ.insert(p, updatedJob);
@@ -60,7 +62,7 @@ public class Scheduler {
             int p = pq.min().getValue().priority - 1;
             int l = pq.min().getValue().length;
             Job tempJob = new Job(n, p, l);
-
+            tempJob.timeWaiting = 0;
             pq.removeMin();
             updatedQ.insert(p, tempJob);
         }
