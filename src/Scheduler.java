@@ -89,21 +89,23 @@ public class Scheduler {
 
     public int getLength(String[] jobDesc) {
         int l = 0;
-        for (int i = 0; i < jobDesc.length - 1; i++) {
-            if (jobDesc[i].equals("length")) {
-                return l = Integer.parseInt(jobDesc[i + 1]);
+        for (int i = jobDesc.length; i >=0 ; i--) {
+            if (jobDesc[i-1].equals("length")) {
+                return l = Integer.parseInt(jobDesc[i]);
             }
         }
         return l;
     }
 
     public String getJobName(String[] jobDesc) {
-        String n = null;
-        for (int i = 0; i < jobDesc.length - 1; i++) {
-            if (jobDesc[i].equals("job")) {
-                return n = jobDesc[i + 1];
-            }
+        String n = jobDesc[2];
+
+        int i = 3;
+        while(!jobDesc[i].equals("with")){
+            n+=" "+jobDesc[i];
+            i++;
         }
+        
         return n;
     }
 
