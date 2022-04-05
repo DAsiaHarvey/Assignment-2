@@ -1,8 +1,8 @@
 public class Job {
-    static int priority;
-    static int length;
-    static int timeWaiting = 0;
-    static String name;
+    int priority = 0;
+    int length = 1;
+    int timeWaiting = 0;
+    String name = null;
 
     public Job(String n, int p, int l){
         name = n;
